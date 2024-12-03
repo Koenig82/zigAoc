@@ -1,6 +1,6 @@
 const std = @import("std");
-const days = @import("dayImport.zig");
-const root = @import("root.zig");
+const days = @import("Iday.zig");
+const root = @import("util.zig");
 
 pub fn main() !void {
     const args = try std.process.argsAlloc(std.heap.page_allocator);
