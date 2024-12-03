@@ -1,0 +1,13 @@
+*.exe
+*.ilk
+*.zip
+*.exp
+*.obj
+obj/
+*.pdb
+*.nativecodeanalysis.xml
+*.lib
+build
+.vs
+.clangd
+.zig-cache
