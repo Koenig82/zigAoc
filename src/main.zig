@@ -53,7 +53,6 @@ fn run_latest_day() !void {
 }
 
 fn split_buffer_into_lines(buffer: []const u8, allocator: *const std.mem.Allocator) ![]const []const u8 {
-    // First pass: Count the number of lines
     var line_count: usize = 0;
     for (buffer) |byte| {
         if (byte == '\n') {
@@ -61,29 +60,24 @@ fn split_buffer_into_lines(buffer: []const u8, allocator: *const std.mem.Allocat
         }
     }
 
-    // Account for the last line if it doesn't end with a newline
     if (buffer.len > 0 and buffer[buffer.len - 1] != '\n') {
         line_count += 1;
     }
 
-    // Allocate the outer slice
     const lines = try allocator.alloc([]const u8, line_count);
-
-    // Second pass: Fill the slice of slices
     var start: usize = 0;
     var line_idx: usize = 0;
-
     var idx: usize = 0;
+
     while (idx < buffer.len) {
         if (buffer[idx] == '\n') {
-            lines[line_idx] = buffer[start..idx]; // Slice the buffer for the current line
+            lines[line_idx] = buffer[start..idx];
             line_idx += 1;
-            start = idx + 1; // Move start to the next character after '\n'
+            start = idx + 1;
         }
         idx += 1;
     }
 
-    // Handle the case where the last line doesn't end with a newline
     if (start < buffer.len) {
         lines[line_idx] = buffer[start..];
     }
