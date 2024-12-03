@@ -1,6 +1,7 @@
 const std = @import("std");
 
-pub fn load_input() void {}
+pub const secondStar: bool = false;
+pub const inputPath: []const u8 = "zig-out/bin/data/2024/02/input.txt";
 
 pub fn star1(input: []const []const u8) void {
     _ = input;

@@ -2,6 +2,10 @@ const std = @import("std");
 const days = @import("Iday.zig");
 const root = @import("util.zig");
 
+// MARK: TODOS
+// TODO Fix run specific day/star
+// TODO Fix run all stars (input allocations?)
+
 pub fn main() !void {
     const args = try std.process.argsAlloc(std.heap.page_allocator);
     defer std.process.argsFree(std.heap.page_allocator, args);
