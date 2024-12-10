@@ -1,10 +1,10 @@
 const std = @import("std");
 const days = @import("Iday.zig");
-const root = @import("util.zig");
 
 // MARK: TODOS
 // TODO Fix run specific day/star
 // TODO Fix run all stars (input allocations?)
+// TODO ArenaAllocator backed by gpa or fixed size?
 
 pub fn main() !void {
     const args = try std.process.argsAlloc(std.heap.page_allocator);
