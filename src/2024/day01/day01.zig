@@ -10,13 +10,13 @@ pub fn star1(input: []const []const u8) void {
     for (input) |line| {
         const numeric_partA = line[0..5];
         const number1 = std.fmt.parseInt(i32, numeric_partA, 10) catch |err| {
-            std.debug.print("Error parsing line '{s}': {}\n", .{ line, err });
+            std.debug.print("std.fmt.parseInt error with line '{s}': {}\n", .{ line, err });
             continue;
         };
 
         const numeric_partB = line[8..13];
         const number2 = std.fmt.parseInt(i32, numeric_partB, 10) catch |err| {
-            std.debug.print("Error parsing line '{s}': {}\n", .{ line, err });
+            std.debug.print("std.fmt.parseInt error with line '{s}': {}\n", .{ line, err });
             continue;
         };
         colA[i] = number1;
@@ -38,7 +38,7 @@ pub fn star2(input: []const []const u8) void {
     for (input) |line| {
         const numeric_partA = line[0..5];
         const number1 = std.fmt.parseInt(i32, numeric_partA, 10) catch |err| {
-            std.debug.print("Error parsing line '{s}': {}\n", .{ line, err });
+            std.debug.print("std.fmt.parseInt error with line '{s}': {}\n", .{ line, err });
             continue;
         };
         for (input) |lineB| {

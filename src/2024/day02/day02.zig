@@ -16,7 +16,7 @@ pub fn star1(input: []const []const u8) void {
 
     for (input) |line| {
         numbers = stringUtil.splitToInts(line, ' ', &allocator) catch |err| {
-            std.debug.print("dickNballs {}\n", .{err});
+            std.debug.print("splitToInts error: {}\n", .{err});
             return;
         };
         increasing = undefined;
@@ -59,11 +59,11 @@ pub fn star2(input: []const []const u8) void {
 
     for (input) |line| {
         numbers = stringUtil.splitToInts(line, ' ', &allocator) catch |err| {
-            std.debug.print("dickNballs {}\n", .{err});
+            std.debug.print("splitToInts error: {}\n", .{err});
             return;
         };
         if (validateLine(numbers, &allocator) catch |err| {
-            std.debug.print("Error: {}\n", .{err});
+            std.debug.print("validateLine error: {}\n", .{err});
             return;
         }) {
             safe += 1;
