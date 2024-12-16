@@ -29,12 +29,21 @@ pub fn build(b: *std.Build) void {
     // running `zig build`).
     b.installArtifact(lib);
 
+    const regex_dep = b.dependency("regex", .{ .target = target });
+    const regex_mod = regex_dep.module("regex");
+
+    const exre_dep = b.dependency("exre", .{ .target = target });
+    const exre_mod = exre_dep.module("exre");
+
     const exe = b.addExecutable(.{
         .name = "zigAoc",
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
     });
+
+    exe.root_module.addImport("regex", regex_mod);
+    exe.root_module.addImport("exre", exre_mod);
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
